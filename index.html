@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pigmalion - Ordenador de serie</title>
+
+  <style>
+    div {
+      display: inline-block;
+    }
+    input[type=text] {
+      width: 30px;
+    }
+  </style>
+
+  <script type="text/javascript">
+    function justNumbers(e) {
+      var keynum = window.event ? window.event.keyCode : e.which;
+      if ((keynum == 8) || (keynum == 46))
+      return true;
+        
+      return /\d/.test(String.fromCharCode(keynum));
+    }
+
+    function order() {
+
+      var array = new Array();
+      var elements = document.querySelectorAll("#form input[type=text]");
+      for (i=0; i<elements.length; i++) {
+        array.push(elements[i].value);
+      }
+
+      array.sort(function(v1, v2) {
+        if (v1>v2)
+          return 1;
+        else
+          return 0;
+      });
+
+      document.getElementById("result").innerHTML = 'Números ordenados de forma ascedente: ';
+      for(f=0; f<array.length; f++){
+        document.getElementById("result").innerHTML += array[f] + ' ';
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+  <form id="form">
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <div>
+      <input type="text" onkeypress="return justNumbers(event);">
+    </div>
+    <input type="button" value="Odenar" onclick="javascript:order();" >
+  </form>
+
+  <div id="result">
+    
+  </div>
+
+</body>
+</html>
